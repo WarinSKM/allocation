@@ -35,5 +35,14 @@ The app will be available at `http://localhost:5173`.
 ```bash
 npm run build   # production build
 npm run lint    # ESLint
-npm run mock    # regenerate mock data
 ```
+
+## Mock Data
+
+The app ships with pre-generated mock data. To regenerate it with new random values:
+
+```bash
+npm run mock
+```
+
+This rewrites the JSON files in `src/data/db/` and `public/data/suborders.json`.

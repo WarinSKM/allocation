@@ -2,8 +2,8 @@ import { Typography } from "../ui/typography";
 import FilterChip from "./filterChip";
 import FilterCommandBox from "./FilterCommandBox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
-import useSupplier from "@/hooks/useSupplier";
-import useStock from "@/hooks/useStock";
+import useSupplierOptions from "@/hooks/useSupplierOptions";
+import useWarehouseOptions from "@/hooks/useWarehouseOptions";
 import { useFilterContext, type FilterStatus, type FilterSource } from "@/contexts/filterContext";
 import { useAllocation } from "@/hooks/useAllocation";
 import type { SubOrderType } from "@/data/helper";
@@ -23,8 +23,8 @@ const SOURCE_OPTIONS: { value: FilterSource; label: string }[] = [
 ];
 
 export default function FilterSection() {
-    const { warehouseFilterOptions } = useStock();
-    const { supplierFilterOptions } = useSupplier();
+    const { warehouseFilterOptions } = useWarehouseOptions();
+    const { supplierFilterOptions } = useSupplierOptions();
     const { data } = useAllocation();
     const { types, status, source, warehouse, supplier, toggleType, setStatus, setSource, setWarehouse, setSupplier, filterData } = useFilterContext();
 

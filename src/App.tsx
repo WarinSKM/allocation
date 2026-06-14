@@ -3,7 +3,6 @@ import "./App.css";
 import DashBoardPanel from "./components/customs/DashBoardPanel";
 import Table from "./components/customs/Table";
 import Summary from "./components/customs/summary";
-import { Button } from "./components/ui/button";
 import { Typography } from "./components/ui/typography";
 import { useAllocation } from "./hooks/useAllocation";
 import useStock from "./hooks/useStock";

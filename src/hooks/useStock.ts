@@ -2,7 +2,6 @@ import { useDataContext } from "@/contexts/dataContext";
 import type { Warehouse } from "@/data/helper/getWarehouse";
 import type { WarehouseSupplierProduct } from "@/data/helper/getWarehouseSupplierProduct";
 import { wspStore } from "@/data/helper/getWarehouseSupplierProduct";
-import { ANY_WAREHOUSE_ID, ALL_FILTER_VALUE } from "@/constants";
 import { useMemo } from "react";
 
 function getTotalStockLeft(data: WarehouseSupplierProduct[]) {
@@ -13,21 +12,6 @@ const totalStock = getTotalStockLeft(wspStore);
 
 export default function useStock() {
   const dataContext = useDataContext();
-
-  const warehouseFilterOptions = useMemo(() => {
-    return [
-      { value: ALL_FILTER_VALUE,   label: "All Warehouse" },
-      { value: ANY_WAREHOUSE_ID,   label: "Any Warehouse" },
-      ...dataContext.data.warehouse.map((item) => ({ value: item.warehouse_id, label: item.warehouse_name })),
-    ];
-  }, [dataContext.data.warehouse]);
-
-  const warehouseSourceOptions = useMemo(() => {
-    return [
-      { value: ANY_WAREHOUSE_ID, label: "Any Warehouse" },
-      ...dataContext.data.warehouse.map((item) => ({ value: item.warehouse_id, label: item.warehouse_name })),
-    ];
-  }, [dataContext.data.warehouse]);
 
   const totalStockLeft = useMemo(() => {
     return getTotalStockLeft(dataContext.data.wsp);
@@ -66,7 +50,7 @@ export default function useStock() {
     return warehouseMap;
   }, []);
 
-  return { eachWarehouseStockLeft, totalStockLeft, totalStock, stockLeftPct, fullStockPerWarehouse, warehouseFilterOptions, warehouseSourceOptions };
+  return { eachWarehouseStockLeft, totalStockLeft, totalStock, stockLeftPct, fullStockPerWarehouse };
 }
 
 export { getTotalStockLeft };

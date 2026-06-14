@@ -12,8 +12,8 @@ import type { SubOrderData } from "@/hooks/useAllocation";
 import type { SubOrderType } from "@/data/helper";
 import { useDataContext } from "@/contexts/dataContext";
 import { TYPE_MULTIPLIER, ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, ALL_FILTER_VALUE } from "@/constants";
-import useStock from "@/hooks/useStock";
-import useSupplier from "@/hooks/useSupplier";
+import useWarehouseOptions from "@/hooks/useWarehouseOptions";
+import useSupplierOptions from "@/hooks/useSupplierOptions";
 import { useEffect, useMemo, useState } from "react";
 import { ScrollArea } from "../ui/scroll-area";
 
@@ -26,8 +26,8 @@ interface ManualAllocationDrawerProps {
 export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow }: ManualAllocationDrawerProps) {
   const { setSubOrderFill, setCustomerCredit, setStockLeft, setSubOrderWsp, setSubOrderStatus, data, increaseManualCount } = useDataContext();
 
-  const { warehouseSourceOptions } = useStock();
-  const { supplierSourceOptions } = useSupplier();
+  const { warehouseSourceOptions } = useWarehouseOptions();
+  const { supplierSourceOptions } = useSupplierOptions();
 
   const [qty, setQty] = useState(0);
   const [selectedSupplierId, setSelectedSupplierId] = useState(ANY_SUPPLIER_ID);

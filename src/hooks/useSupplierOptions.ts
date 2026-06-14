@@ -2,7 +2,7 @@ import { useDataContext } from "@/contexts/dataContext";
 import { ANY_SUPPLIER_ID, ALL_FILTER_VALUE } from "@/constants";
 import { useMemo } from "react";
 
-export default function useSupplier() {
+export default function useSupplierOptions() {
   const dataContext = useDataContext();
 
   const supplierFilterOptions = useMemo(() => {

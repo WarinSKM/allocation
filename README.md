@@ -5,11 +5,13 @@ A salmon inventory allocation dashboard built with React, TypeScript, and Vite.
 ## Clone or Download
 
 **Clone via SSH**
+
 ```bash
 git clone git@github.com:WarinSKM/allocation.git
 ```
 
 **Clone via HTTPS**
+
 ```bash
 git clone https://github.com/WarinSKM/allocation.git
 ```
@@ -45,4 +47,4 @@ The app ships with pre-generated mock data. To regenerate it with new random val
 npm run mock
 ```
 
-This rewrites the JSON files in `src/data/db/` and `public/data/suborders.json`.
+This rewrites the JSON files in `src/data/db/`.

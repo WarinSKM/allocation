@@ -7,9 +7,7 @@ import { Pagination, PaginationLink, PaginationPrevious, PaginationContent, Pagi
 import ManualAllocationDrawer from "./manualAllocationDrawer";
 import Chip from "../ui/chip";
 import OrderMethod from "./orderMethod";
-
-type SortKey = 'order' | 'subOrder' | 'type' | 'request' | 'fill' | 'value' | 'availableCredit' | 'createDate' | 'product' | 'customer' | 'warehouse' | 'supplier';
-type SortDir = 'asc' | 'desc';
+import { type SortKey, type SortDir, sortSubOrderData } from "@/lib/sort";
 
 const TABLE_ROW_CLASSNAME = "grid grid-cols-[20px_repeat(13,minmax(0,1fr))] gap-x-2 px-4 py-2";
 
@@ -51,28 +49,10 @@ export default function Table() {
     setCurrPage(1);
   }, [filteredData]);
 
-  const sortedData = useMemo(() => {
-    if (!sortKey) return filteredData;
-
-    function getValue(row: SubOrderData, key: SortKey): string | number {
-      switch (key) {
-        case 'product': return row.product.product_name;
-        case 'customer': return row.customer.customer_name;
-        case 'warehouse': return row.warehouse.warehouse_name;
-        case 'supplier': return row.supplier.supplier_name;
-        case 'createDate': return new Date(row.createDate).getTime();
-        default: return row[key] as string | number;
-      }
-    }
-
-    return [...filteredData].sort((a, b) => {
-      const dir = sortDir === 'asc' ? 1 : -1;
-      const aVal = getValue(a, sortKey);
-      const bVal = getValue(b, sortKey);
-      if (typeof aVal === 'number' && typeof bVal === 'number') return (aVal - bVal) * dir;
-      return String(aVal).localeCompare(String(bVal)) * dir;
-    });
-  }, [filteredData, sortKey, sortDir]);
+  const sortedData = useMemo(
+    () => sortKey ? sortSubOrderData(filteredData, sortKey, sortDir) : filteredData,
+    [filteredData, sortKey, sortDir],
+  );
 
   const totalPages = Math.max(1, Math.ceil(sortedData.length / itemPerPage));
   const currStart = itemPerPage * (currPage - 1);

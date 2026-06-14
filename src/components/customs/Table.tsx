@@ -107,7 +107,8 @@ export default function Table() {
               ))}
             </div>
           )}
-          {!loading &&
+          {!loading && dataWithCurrPage.length > 0
+            ?
             dataWithCurrPage.map((row, i) => (
               <div key={i} className={cn(TABLE_ROW_CLASSNAME, "cursor-pointer hover:bg-muted")} onClick={() => handleClickRow(row)}>
                 <TableCell>
@@ -129,7 +130,13 @@ export default function Table() {
                 <TableCell>{row.createDate}</TableCell>
                 <TableCell>{row.remark}</TableCell>
               </div>
-            ))}
+            ))
+            : (
+              <div className="w-full h-60 flex items-center justify-center">
+                <Typography variant="h1" className="text-muted-foreground" as="p">No Data</Typography>
+              </div>
+            )
+          }
           {/* Table Body End */}
         </div>
       </div>

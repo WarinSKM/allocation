@@ -27,8 +27,8 @@ interface ManualAllocationDrawerProps {
 export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow }: ManualAllocationDrawerProps) {
   const { setSubOrderFill, setCustomerCredit, setStockLeft, setSubOrderWsp, setSubOrderStatus, data, increaseManualCount } = useDataContext();
 
-  const { allWarehouseOptions } = useStock();
-  const { allSupplierOptions } = useSupplier();
+  const { warehouseSourceOptions } = useStock();
+  const { supplierSourceOptions } = useSupplier();
 
   const [qty, setQty] = useState(0);
   const [selectedSupplierId, setSelectedSupplierId] = useState(ANY_SUPPLIER_ID);
@@ -231,7 +231,7 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {allSupplierOptions.map((s) => (
+                    {supplierSourceOptions.map((s) => (
                       <SelectItem key={s.value} value={s.value}>
                         {s.value} — {s.label}
                       </SelectItem>
@@ -246,7 +246,7 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {allWarehouseOptions.map((w) => (
+                    {warehouseSourceOptions.map((w) => (
                       <SelectItem key={w.value} value={w.value}>
                         {w.value} — {w.label}
                       </SelectItem>

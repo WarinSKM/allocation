@@ -5,7 +5,7 @@ import { useMemo } from "react";
 export default function useSupplier() {
   const dataContext = useDataContext();
 
-  const allSupplier = useMemo(() => {
+  const supplierFilterOptions = useMemo(() => {
     return [
       { value: ALL_FILTER_VALUE, label: "All Supplier" },
       { value: ANY_SUPPLIER_ID,  label: "Any Supplier" },
@@ -13,12 +13,12 @@ export default function useSupplier() {
     ];
   }, [dataContext.data.supplier]);
 
-  const allSupplierOptions = useMemo(() => {
+  const supplierSourceOptions = useMemo(() => {
     return [
       { value: ANY_SUPPLIER_ID, label: "Any Supplier" },
       ...dataContext.data.supplier.map((item) => ({ value: item.supplier_id, label: item.supplier_name })),
     ];
   }, [dataContext.data.supplier]);
 
-  return { allSupplier, allSupplierOptions };
+  return { supplierFilterOptions, supplierSourceOptions };
 }

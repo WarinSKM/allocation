@@ -14,7 +14,7 @@ const totalStock = getTotalStockLeft(wspStore);
 export default function useStock() {
   const dataContext = useDataContext();
 
-  const allWarehouse = useMemo(() => {
+  const warehouseFilterOptions = useMemo(() => {
     return [
       { value: ALL_FILTER_VALUE,   label: "All Warehouse" },
       { value: ANY_WAREHOUSE_ID,   label: "Any Warehouse" },
@@ -22,7 +22,7 @@ export default function useStock() {
     ];
   }, [dataContext.data.warehouse]);
 
-  const allWarehouseOptions = useMemo(() => {
+  const warehouseSourceOptions = useMemo(() => {
     return [
       { value: ANY_WAREHOUSE_ID, label: "Any Warehouse" },
       ...dataContext.data.warehouse.map((item) => ({ value: item.warehouse_id, label: item.warehouse_name })),
@@ -66,7 +66,7 @@ export default function useStock() {
     return warehouseMap;
   }, []);
 
-  return { eachWarehouseStockLeft, totalStockLeft, totalStock, stockLeftPct, fullStockPerWarehouse, allWarehouse, allWarehouseOptions };
+  return { eachWarehouseStockLeft, totalStockLeft, totalStock, stockLeftPct, fullStockPerWarehouse, warehouseFilterOptions, warehouseSourceOptions };
 }
 
 export { getTotalStockLeft };

@@ -23,8 +23,8 @@ const SOURCE_OPTIONS: { value: FilterSource; label: string }[] = [
 ];
 
 export default function FilterSection() {
-    const { allWarehouse } = useStock();
-    const { allSupplier } = useSupplier();
+    const { warehouseFilterOptions } = useStock();
+    const { supplierFilterOptions } = useSupplier();
     const { data } = useAllocation();
     const { types, status, source, warehouse, supplier, toggleType, setStatus, setSource, setWarehouse, setSupplier, filterData } = useFilterContext();
 
@@ -85,7 +85,7 @@ export default function FilterSection() {
                     <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                    {allWarehouse.map((item) => (
+                    {warehouseFilterOptions.map((item) => (
                         <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
                     ))}
                 </SelectContent>
@@ -96,7 +96,7 @@ export default function FilterSection() {
                     <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                    {allSupplier.map((item) => (
+                    {supplierFilterOptions.map((item) => (
                         <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
                     ))}
                 </SelectContent>

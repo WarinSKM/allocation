@@ -29,7 +29,7 @@ const TYPE_WEIGHT: Record<SubOrderType, number> = {
   DAILY: 2,
 };
 
-function easyAllocationSortDataFN(data: SubOrderData[]) {
+function sortSubOrderDataByPriority(data: SubOrderData[]) {
   return [...data].sort((a, b) => TYPE_WEIGHT[a.type] - TYPE_WEIGHT[b.type] || new Date(a.createDate).getTime() - new Date(b.createDate).getTime());
 }
 
@@ -89,7 +89,7 @@ function useAllocation() {
 
   const data = useMemo(() => {
     const temp = joinData(dataContext.data);
-    return easyAllocationSortDataFN(temp);
+    return sortSubOrderDataByPriority(temp);
   }, [dataContext.data]);
 
   const totalRequest = useMemo(() => getTotalRequested(data), [data]);
@@ -101,7 +101,7 @@ function useAllocation() {
     return () => clearTimeout(timer);
   }, []);
 
-  return { loading, data, easyAllocationSortDataFN, totalAllocated, totalRequest, totalValueAllocated };
+  return { loading, data, sortSubOrderDataByPriority, totalAllocated, totalRequest, totalValueAllocated };
 }
 
 export { useAllocation, getTotalAllocated, getTotalRequested, getTotalValueAllocated };

@@ -21,7 +21,7 @@ function getDataById<T>({ id, data, key }: { id: string; data: T[]; key: keyof T
   return data.find((item) => item[key] === id);
 }
 
-function bestSortForAllocationDataFN(subOrder: SubOrder[], order: Order[]) {
+function sortSubOrdersByPriority(subOrder: SubOrder[], order: Order[]) {
 
   const emergencyData = subOrder.filter((item) => item.type === "EMERGENCY");
   const overdueData = subOrder.filter((item) => item.type === "OVER_DUE");
@@ -98,7 +98,7 @@ function runAutoAllocation(data: Data): AllocationResult {
   const updatedSubOrders = new Map<string, SubOrder>();
 
   // Sort sub order by: emergency > overdue > daily and FIFO
-  const sortedSubOrders = bestSortForAllocationDataFN(data.subOrder, data.order);
+  const sortedSubOrders = sortSubOrdersByPriority(data.subOrder, data.order);
 
   for (const so of sortedSubOrders) {
     const order = getDataById<Order>({ id: so.order_id, data: data.order, key: 'order_id' });
@@ -257,5 +257,5 @@ const useDataContext = () => {
   return useContext(DataContext);
 };
 
-export { DataContextProvider, useDataContext, bestSortForAllocationDataFN, runAutoAllocation, bankersRound, findBestWsp };
+export { DataContextProvider, useDataContext, sortSubOrdersByPriority, runAutoAllocation, bankersRound, findBestWsp };
 export type { AllocationResult };

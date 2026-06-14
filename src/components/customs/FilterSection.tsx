@@ -6,7 +6,6 @@ import useSupplierOptions from "@/hooks/useSupplierOptions";
 import useWarehouseOptions from "@/hooks/useWarehouseOptions";
 import { useFilterContext, type FilterStatus, type FilterSource } from "@/contexts/filterContext";
 import { useAllocation } from "@/hooks/useAllocation";
-import type { SubOrderType } from "@/data/helper";
 
 const STATUS_OPTIONS: { value: FilterStatus; label: string }[] = [
     { value: "all", label: "All" },
@@ -43,18 +42,18 @@ export default function FilterSection() {
             <div className="flex items-center space-x-2">
                 <FilterChip
                     label="Emergency" count={emergencyCount} variant="red"
-                    checked={types.has('EMERGENCY' as SubOrderType)}
-                    onCheckedChange={() => toggleType('EMERGENCY' as SubOrderType)}
+                    checked={types.has('EMERGENCY')}
+                    onCheckedChange={() => toggleType('EMERGENCY')}
                 />
                 <FilterChip
                     label="Overdue" count={overdueCount} variant="amber"
-                    checked={types.has('OVER_DUE' as SubOrderType)}
-                    onCheckedChange={() => toggleType('OVER_DUE' as SubOrderType)}
+                    checked={types.has('OVER_DUE')}
+                    onCheckedChange={() => toggleType('OVER_DUE')}
                 />
                 <FilterChip
                     label="Daily" count={dailyCount} variant="blue"
-                    checked={types.has('DAILY' as SubOrderType)}
-                    onCheckedChange={() => toggleType('DAILY' as SubOrderType)}
+                    checked={types.has('DAILY')}
+                    onCheckedChange={() => toggleType('DAILY')}
                 />
             </div>
 

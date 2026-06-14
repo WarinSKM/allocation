@@ -3,6 +3,7 @@ import { Progress } from "../ui/progress";
 import useStock from "@/hooks/useStock";
 import { useAllocation } from "@/hooks/useAllocation";
 import { useMemo } from "react";
+import { cn } from "@/utils";
 
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -20,8 +21,8 @@ export default function DashBoardPanel() {
   const allocationHook = useAllocation()
 
   const coveragePct = useMemo(() => {
-    return Math.min(100, Math.round((stockHook.totalStockLeft / allocationHook.totalRequest) * 100));
-  }, [stockHook.totalStockLeft, allocationHook.totalRequest]);
+    return Math.min(100, Math.round((stockHook.totalStock / allocationHook.totalRequest) * 100));
+  }, [stockHook.totalStock, allocationHook.totalRequest]);
 
   return (
     <div className="flex flex-col border-l-2 text-sm px-4 pt-3">
@@ -37,9 +38,9 @@ export default function DashBoardPanel() {
           <Typography variant="muted">Total requested</Typography>
           <Typography variant="p">{fmt(allocationHook.totalRequest)} kg</Typography>
         </div>
-        <Progress value={coveragePct} indicatorClassName="bg-red-400" />
+        <Progress value={coveragePct} indicatorClassName={cn(coveragePct >= 100 && "bg-green-400", coveragePct >= 80 && coveragePct < 100 && "bg-yellow-400", coveragePct < 80 && "bg-red-400")} />
         <Typography variant="muted">
-          Supply covers <span className="font-semibold text-red-500">{coveragePct}%</span> of demand — {coveragePct >= 100 ? "allocation is sufficient." : "allocation is scarce."}
+          Supply covers <span className={cn("font-semibold", coveragePct >= 100 && "text-green-500", coveragePct >= 80 && coveragePct < 100 && "text-yellow-500", coveragePct < 80 && "text-red-500")}>{coveragePct}%</span> of demand — {coveragePct >= 100 ? "allocation is sufficient." : "allocation is scarce."}
         </Typography>
       </section>
 

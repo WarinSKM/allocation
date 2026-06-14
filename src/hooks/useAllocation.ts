@@ -2,6 +2,8 @@ import { useDataContext } from "@/contexts/dataContext";
 import type { Customer, Data, Product, Supplier, Warehouse, SubOrderType } from "@/data/helper";
 import { useEffect, useMemo, useState } from "react";
 
+export type AllocationMethod = "AUTO" | "MANUAL";
+
 export type SubOrderData = {
   order: string;
   subOrder: string;
@@ -17,7 +19,7 @@ export type SubOrderData = {
   createDate: string;
   remark: string;
   status: string;
-  allocationMethod: string;
+  allocationMethod: AllocationMethod;
 };
 
 const TYPE_WEIGHT: Record<SubOrderType, number> = {
@@ -66,7 +68,7 @@ function joinData(data: Data) {
         createDate: order.create_date,
         remark: so.remark,
         status: so.status,
-        allocationMethod: so.allocation_method,
+        allocationMethod: so.allocation_method as AllocationMethod,
       },
     ];
   });

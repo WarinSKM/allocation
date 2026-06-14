@@ -10,6 +10,10 @@ type DataContextType = {
   setCustomerCredit: (customer_id: string, amount: number) => void;
   setSubOrderFill: (subOrder_id: string, amount: number) => void;
   setStockLeft: ({ warehose_id, supplier_id, product_id, amount }: { warehose_id: string; supplier_id: string; product_id: string, amount: number }) => void;
+  setSubOrderWsp: (sub_order_id: string, warehouse_supplier_product_id: string) => void;
+  setSubOrderStatus: (sub_order_id: string, status: string) => void;
+  increaseManualCount: () => void;
+  manualCount: number;
 };
 
 function getDataById<T>({ id, data, key }: { id: string; data: T[]; key: keyof T }): T | undefined {
@@ -48,7 +52,7 @@ function bestSortForAllocationDataFN(subOrder: SubOrder[], order: Order[]) {
 }
 
 // ── Price multiplier per order type ──────────────────────────────────────
-const TYPE_MULTIPLIER: Record<string, number> = {
+export const TYPE_MULTIPLIER: Record<string, number> = {
   EMERGENCY: 1.2,
   OVER_DUE: 1.1,
   DAILY: 1.0,
@@ -165,16 +169,21 @@ function runAutoAllocation(data: Data): AllocationResult {
 
 const initValue = {
   data: initData,
+  manualCount: 0,
   setData: () => { },
   getDataById,
   setCustomerCredit: () => { },
   setSubOrderFill: () => { },
-  setStockLeft: () => { }
+  setStockLeft: () => { },
+  setSubOrderWsp: () => { },
+  setSubOrderStatus: () => { },
+  increaseManualCount: () => { },
 };
 
 const DataContext = createContext<DataContextType>(initValue);
 
 const DataContextProvider = ({ children }: { children: ReactNode }) => {
+  const [manualCount, setManualCount] = useState(0);
   const [data, setData] = useState<typeof initData>(initData);
 
   function setCustomerCredit(customer_id: string, amount: number) {
@@ -189,17 +198,6 @@ const DataContextProvider = ({ children }: { children: ReactNode }) => {
     });
   }
 
-  function setSubOrder(sub_order_id: string, data: SubOrder) {
-    setData((prev) => {
-      const subOrder = prev.subOrder.find(item => item.sub_order_id === sub_order_id);
-      if (!subOrder) return prev;
-      const newSubOrder = { ...data };
-      return {
-        ...prev,
-        subOrder: prev.subOrder.map(item => item.sub_order_id === sub_order_id ? newSubOrder : item),
-      };
-    });
-  }
 
   function setSubOrderFill(subOrder_id: string, amount: number) {
     setData((prev) => {
@@ -225,12 +223,40 @@ const DataContextProvider = ({ children }: { children: ReactNode }) => {
     });
   }
 
+  function setSubOrderWsp(sub_order_id: string, warehouse_supplier_product_id: string) {
+    setData((prev) => {
+      const subOrder = prev.subOrder.find(item => item.sub_order_id === sub_order_id);
+      if (!subOrder) return prev;
+      return {
+        ...prev,
+        subOrder: prev.subOrder.map(item =>
+          item.sub_order_id === sub_order_id
+            ? { ...item, warehouse_supplier_product_id, allocation_method: 'MANUAL' }
+            : item
+        ),
+      };
+    });
+  }
+
+  function setSubOrderStatus(sub_order_id: string, status: string) {
+    setData((prev) => ({
+      ...prev,
+      subOrder: prev.subOrder.map(item =>
+        item.sub_order_id === sub_order_id ? { ...item, status } : item
+      ),
+    }));
+  }
+
+  function increaseManualCount() {
+    setManualCount((prev) => prev + 1);
+  }
+
   useEffect(() => {
     const result = runAutoAllocation(initData);
     setData((prev) => ({ ...prev, ...result }));
   }, []);
 
-  return <DataContext.Provider value={{ ...initValue, data, setData, getDataById, setCustomerCredit, setSubOrderFill, setStockLeft }}>{children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ ...initValue, data, setData, getDataById, setCustomerCredit, setSubOrderFill, setStockLeft, setSubOrderWsp, setSubOrderStatus, increaseManualCount, manualCount }}>{children}</DataContext.Provider>;
 };
 
 const useDataContext = () => {

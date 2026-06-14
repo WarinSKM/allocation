@@ -1,0 +1,252 @@
+[
+  {
+    "customer_id": "CT-0001",
+    "customer_name": "Nordic Fresh Co.",
+    "credit": 581
+  },
+  {
+    "customer_id": "CT-0002",
+    "customer_name": "Pacific Traders Ltd.",
+    "credit": 3019
+  },
+  {
+    "customer_id": "CT-0003",
+    "customer_name": "Sunrise Seafood",
+    "credit": 71852
+  },
+  {
+    "customer_id": "CT-0004",
+    "customer_name": "Euro Delicatessen",
+    "credit": 68543
+  },
+  {
+    "customer_id": "CT-0005",
+    "customer_name": "Metro Supermart",
+    "credit": 50955
+  },
+  {
+    "customer_id": "CT-0006",
+    "customer_name": "Island Gourmet",
+    "credit": 58991
+  },
+  {
+    "customer_id": "CT-0007",
+    "customer_name": "Royal Cuisine Co.",
+    "credit": 370526
+  },
+  {
+    "customer_id": "CT-0008",
+    "customer_name": "Green Table Foods",
+    "credit": 616909
+  },
+  {
+    "customer_id": "CT-0009",
+    "customer_name": "Luxe Hotel Group",
+    "credit": 187626
+  },
+  {
+    "customer_id": "CT-0010",
+    "customer_name": "Fresh Market PLC",
+    "credit": 744308
+  },
+  {
+    "customer_id": "CT-0011",
+    "customer_name": "Ocean Harvest Inc.",
+    "credit": 3869
+  },
+  {
+    "customer_id": "CT-0012",
+    "customer_name": "Polar Fish Co.",
+    "credit": 3204
+  },
+  {
+    "customer_id": "CT-0013",
+    "customer_name": "Atlantic Catch Ltd.",
+    "credit": 65929
+  },
+  {
+    "customer_id": "CT-0014",
+    "customer_name": "Blue Wave Trading",
+    "credit": 62463
+  },
+  {
+    "customer_id": "CT-0015",
+    "customer_name": "Silver Stream Foods",
+    "credit": 29029
+  },
+  {
+    "customer_id": "CT-0016",
+    "customer_name": "Arctic Pearl Co.",
+    "credit": 57524
+  },
+  {
+    "customer_id": "CT-0017",
+    "customer_name": "Nordic Catch Inc.",
+    "credit": 1168748
+  },
+  {
+    "customer_id": "CT-0018",
+    "customer_name": "Seafood Paradise",
+    "credit": 1303032
+  },
+  {
+    "customer_id": "CT-0019",
+    "customer_name": "Marine Delights",
+    "credit": 1197612
+  },
+  {
+    "customer_id": "CT-0020",
+    "customer_name": "Pacific Blue Ltd.",
+    "credit": 1601165
+  },
+  {
+    "customer_id": "CT-0021",
+    "customer_name": "Northern Star Foods",
+    "credit": 1873
+  },
+  {
+    "customer_id": "CT-0022",
+    "customer_name": "Crystal Waters Co.",
+    "credit": 922
+  },
+  {
+    "customer_id": "CT-0023",
+    "customer_name": "Deep Blue Trading",
+    "credit": 75779
+  },
+  {
+    "customer_id": "CT-0024",
+    "customer_name": "Fjord Fresh Inc.",
+    "credit": 38284
+  },
+  {
+    "customer_id": "CT-0025",
+    "customer_name": "Wave Crest Foods",
+    "credit": 49442
+  },
+  {
+    "customer_id": "CT-0026",
+    "customer_name": "Sea Breeze Ltd.",
+    "credit": 41898
+  },
+  {
+    "customer_id": "CT-0027",
+    "customer_name": "Harbor Fresh Co.",
+    "credit": 776358
+  },
+  {
+    "customer_id": "CT-0028",
+    "customer_name": "Coastal Gourmet",
+    "credit": 732288
+  },
+  {
+    "customer_id": "CT-0029",
+    "customer_name": "Tidal Wave Foods",
+    "credit": 917557
+  },
+  {
+    "customer_id": "CT-0030",
+    "customer_name": "Reef Fresh Trading",
+    "credit": 225304
+  },
+  {
+    "customer_id": "CT-0031",
+    "customer_name": "Coral Bay Co.",
+    "credit": 2498
+  },
+  {
+    "customer_id": "CT-0032",
+    "customer_name": "Peninsula Foods Inc.",
+    "credit": 1550
+  },
+  {
+    "customer_id": "CT-0033",
+    "customer_name": "Glacier Fresh Ltd.",
+    "credit": 11182
+  },
+  {
+    "customer_id": "CT-0034",
+    "customer_name": "Iceberg Trading Co.",
+    "credit": 35876
+  },
+  {
+    "customer_id": "CT-0035",
+    "customer_name": "Tundra Fish Inc.",
+    "credit": 19582
+  },
+  {
+    "customer_id": "CT-0036",
+    "customer_name": "Boreal Seafood",
+    "credit": 45066
+  },
+  {
+    "customer_id": "CT-0037",
+    "customer_name": "Taiga Fresh Co.",
+    "credit": 882564
+  },
+  {
+    "customer_id": "CT-0038",
+    "customer_name": "Cascade Foods Inc.",
+    "credit": 1548718
+  },
+  {
+    "customer_id": "CT-0039",
+    "customer_name": "Summit Fresh Co.",
+    "credit": 344581
+  },
+  {
+    "customer_id": "CT-0040",
+    "customer_name": "Valley Gourmet Ltd.",
+    "credit": 1324202
+  },
+  {
+    "customer_id": "CT-0041",
+    "customer_name": "Delta Trading Inc.",
+    "credit": 2052
+  },
+  {
+    "customer_id": "CT-0042",
+    "customer_name": "Estuary Foods Co.",
+    "credit": 1760
+  },
+  {
+    "customer_id": "CT-0043",
+    "customer_name": "Lagoon Fresh Ltd.",
+    "credit": 62223
+  },
+  {
+    "customer_id": "CT-0044",
+    "customer_name": "Bayou Trading Inc.",
+    "credit": 9806
+  },
+  {
+    "customer_id": "CT-0045",
+    "customer_name": "Inlet Seafood Co.",
+    "credit": 54289
+  },
+  {
+    "customer_id": "CT-0046",
+    "customer_name": "Cove Fresh Ltd.",
+    "credit": 54608
+  },
+  {
+    "customer_id": "CT-0047",
+    "customer_name": "Sound Foods Inc.",
+    "credit": 156676
+  },
+  {
+    "customer_id": "CT-0048",
+    "customer_name": "Strait Trading Co.",
+    "credit": 1076967
+  },
+  {
+    "customer_id": "CT-0049",
+    "customer_name": "Channel Fresh Ltd.",
+    "credit": 773628
+  },
+  {
+    "customer_id": "CT-0050",
+    "customer_name": "Archipelago Foods",
+    "credit": 1339338
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "product_id": "P-001",
+    "product_name": "Atlantic Salmon 5kg",
+    "product_price": 50
+  },
+  {
+    "product_id": "P-002",
+    "product_name": "Salmon Fillet 1kg",
+    "product_price": 45
+  },
+  {
+    "product_id": "P-003",
+    "product_name": "Whole Salmon 3kg",
+    "product_price": 40
+  },
+  {
+    "product_id": "P-004",
+    "product_name": "Smoked Salmon 500g",
+    "product_price": 55
+  },
+  {
+    "product_id": "P-005",
+    "product_name": "Salmon Steak 2kg",
+    "product_price": 48
+  },
+  {
+    "product_id": "P-006",
+    "product_name": "Salmon Portions 250g",
+    "product_price": 52
+  }
+]

@@ -1,0 +1,82 @@
+import { Typography } from "../ui/typography";
+import { Progress } from "../ui/progress";
+import useStock from "@/hooks/useStock";
+import { useAllocation } from "@/hooks/useAllocation";
+import { useMemo } from "react";
+
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function fmt(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(2)}M`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
+  return `${n}`;
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export default function DashBoardPanel() {
+  const stockHook = useStock()
+  const allocationHook = useAllocation()
+
+  const coveragePct = useMemo(() => {
+    return Math.min(100, Math.round((stockHook.totalStockLeft / allocationHook.totalRequest) * 100));
+  }, [stockHook.totalStockLeft, allocationHook.totalRequest]);
+
+  return (
+    <div className="flex flex-col border-l-2 text-sm px-4 pt-3">
+      <section className="space-y-2 pb-5">
+        <Typography variant="small" as="p" className="font-bold uppercase">
+          Supply vs Demand
+        </Typography>
+        <div className="flex items-center justify-between">
+          <Typography variant="muted">Total supply</Typography>
+          <Typography variant="p">{fmt(stockHook.totalStock)} kg</Typography>
+        </div>
+        <div className="flex items-center justify-between">
+          <Typography variant="muted">Total requested</Typography>
+          <Typography variant="p">{fmt(allocationHook.totalRequest)} kg</Typography>
+        </div>
+        <Progress value={coveragePct} indicatorClassName="bg-red-400" />
+        <Typography variant="muted">
+          Supply covers <span className="font-semibold text-red-500">{coveragePct}%</span> of demand — {coveragePct >= 100 ? "allocation is sufficient." : "allocation is scarce."}
+        </Typography>
+      </section>
+
+      {/* Stock Remaining */}
+      <section className="space-y-2 py-5">
+        <div className="flex items-center justify-between">
+          <Typography variant="small" as="p" className="font-bold uppercase">
+            Stock Remaining
+          </Typography>
+          <Typography variant="muted">{fmt(stockHook.totalStockLeft)} kg</Typography>
+        </div>
+        <div className="flex items-center gap-3">
+          <Progress value={stockHook.stockLeftPct} indicatorClassName="bg-green-500" />
+          <Typography variant="muted" className="shrink-0">
+            {stockHook.stockLeftPct}% left
+          </Typography>
+        </div>
+      </section>
+
+      {/* Warehouses */}
+      <section className="space-y-3 py-5">
+        <Typography variant="small" as="p" className="font-bold uppercase">
+          Warehouses
+        </Typography>
+        {stockHook.eachWarehouseStockLeft.map((w) => (
+          <div key={w.warehose.warehouse_id} className="space-y-1">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Typography variant="muted">{w.warehose.warehouse_id}</Typography>
+                <Typography variant="p">{w.warehose.warehouse_name}</Typography>
+              </div>
+              <Typography variant="p">{w.stockLeft.toLocaleString()}</Typography>
+            </div>
+            <Progress value={(w.stockLeft / stockHook.fullStockPerWarehouse.get(w.warehose.warehouse_id)) * 100} indicatorClassName="bg-blue-400" />
+          </div>
+        ))}
+      </section>
+    </div>
+  );
+}

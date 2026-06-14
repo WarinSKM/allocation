@@ -1,0 +1,26 @@
+[
+  {
+    "supplier_id": "SP-001",
+    "supplier_name": "AquaFarm AS"
+  },
+  {
+    "supplier_id": "SP-002",
+    "supplier_name": "FjordFish AB"
+  },
+  {
+    "supplier_id": "SP-003",
+    "supplier_name": "NorSalmon AS"
+  },
+  {
+    "supplier_id": "SP-004",
+    "supplier_name": "SeaHarvest Co."
+  },
+  {
+    "supplier_id": "SP-005",
+    "supplier_name": "Arctic Catch Ltd."
+  },
+  {
+    "supplier_id": "SP-006",
+    "supplier_name": "Iceland Fish Co."
+  }
+]

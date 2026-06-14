@@ -1,0 +1,632 @@
+[
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-001-P-003",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-001",
+    "product_id": "P-003",
+    "stock": 1228
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-002-P-002",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-002",
+    "product_id": "P-002",
+    "stock": 181
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-004-P-004",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-004",
+    "product_id": "P-004",
+    "stock": 66
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-006-P-002",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-006",
+    "product_id": "P-002",
+    "stock": 53
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-001-P-006",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-001",
+    "product_id": "P-006",
+    "stock": 8906
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-003-P-001",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-003",
+    "product_id": "P-001",
+    "stock": 701
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-004-P-001",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-004",
+    "product_id": "P-001",
+    "stock": 12050
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-003-P-005",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-003",
+    "product_id": "P-005",
+    "stock": 300
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-005-P-005",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-005",
+    "product_id": "P-005",
+    "stock": 228
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-006-P-005",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-006",
+    "product_id": "P-005",
+    "stock": 694
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-004-P-003",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-004",
+    "product_id": "P-003",
+    "stock": 31
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-006-P-003",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-006",
+    "product_id": "P-003",
+    "stock": 9827
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-005-P-001",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-005",
+    "product_id": "P-001",
+    "stock": 14
+  },
+  {
+    "warehouse_supplier_product_id": "WH-001-SP-001-P-004",
+    "warehouse_id": "WH-001",
+    "supplier_id": "SP-001",
+    "product_id": "P-004",
+    "stock": 378
+  },
+  {
+    "warehouse_supplier_product_id": "WH-002-SP-003-P-001",
+    "warehouse_id": "WH-002",
+    "supplier_id": "SP-003",
+    "product_id": "P-001",
+    "stock": 610
+  },
+  {
+    "warehouse_supplier_product_id": "WH-002-SP-004-P-006",
+    "warehouse_id": "WH-002",
+    "supplier_id": "SP-004",
+    "product_id": "P-006",
+    "stock": 2204
+  },
+  {
+    "warehouse_supplier_product_id": "WH-002-SP-004-P-003",
+    "warehouse_id": "WH-002",
+    "supplier_id": "SP-004",
+    "product_id": "P-003",
+    "stock": 362
+  },
+  {
+    "warehouse_supplier_product_id": "WH-002-SP-002-P-006",
+    "warehouse_id": "WH-002",
+    "supplier_id": "SP-002",
+    "product_id": "P-006",
+    "stock": 263
+  },
+  {
+    "warehouse_supplier_product_id": "WH-002-SP-005-P-004",
+    "warehouse_id": "WH-002",
+    "supplier_id": "SP-005",
+    "product_id": "P-004",
+    "stock": 38
+  },
+  {
+    "warehouse_supplier_product_id": "WH-002-SP-004-P-001",
+    "warehouse_id": "WH-002",
+    "supplier_id": "SP-004",
+    "product_id": "P-001",
+    "stock": 188
+  },
+  {
+    "warehouse_supplier_product_id": "WH-002-SP-006-P-004",
+    "warehouse_id": "WH-002",
+    "supplier_id": "SP-006",
+    "product_id": "P-004",
+    "stock": 733
+  },
+  {
+    "warehouse_supplier_product_id": "WH-003-SP-005-P-001",
+    "warehouse_id": "WH-003",
+    "supplier_id": "SP-005",
+    "product_id": "P-001",
+    "stock": 31
+  },
+  {
+    "warehouse_supplier_product_id": "WH-003-SP-003-P-005",
+    "warehouse_id": "WH-003",
+    "supplier_id": "SP-003",
+    "product_id": "P-005",
+    "stock": 8802
+  },
+  {
+    "warehouse_supplier_product_id": "WH-003-SP-004-P-002",
+    "warehouse_id": "WH-003",
+    "supplier_id": "SP-004",
+    "product_id": "P-002",
+    "stock": 442
+  },
+  {
+    "warehouse_supplier_product_id": "WH-003-SP-006-P-006",
+    "warehouse_id": "WH-003",
+    "supplier_id": "SP-006",
+    "product_id": "P-006",
+    "stock": 1499
+  },
+  {
+    "warehouse_supplier_product_id": "WH-003-SP-004-P-001",
+    "warehouse_id": "WH-003",
+    "supplier_id": "SP-004",
+    "product_id": "P-001",
+    "stock": 0
+  },
+  {
+    "warehouse_supplier_product_id": "WH-003-SP-005-P-006",
+    "warehouse_id": "WH-003",
+    "supplier_id": "SP-005",
+    "product_id": "P-006",
+    "stock": 14244
+  },
+  {
+    "warehouse_supplier_product_id": "WH-003-SP-001-P-001",
+    "warehouse_id": "WH-003",
+    "supplier_id": "SP-001",
+    "product_id": "P-001",
+    "stock": 6824
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-004-P-002",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-004",
+    "product_id": "P-002",
+    "stock": 6751
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-003-P-003",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-003",
+    "product_id": "P-003",
+    "stock": 0
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-001-P-002",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-001",
+    "product_id": "P-002",
+    "stock": 6737
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-006-P-003",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-006",
+    "product_id": "P-003",
+    "stock": 4427
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-002-P-005",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-002",
+    "product_id": "P-005",
+    "stock": 2446
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-004-P-005",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-004",
+    "product_id": "P-005",
+    "stock": 3830
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-003-P-006",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-003",
+    "product_id": "P-006",
+    "stock": 444
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-002-P-006",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-002",
+    "product_id": "P-006",
+    "stock": 14680
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-004-P-001",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-004",
+    "product_id": "P-001",
+    "stock": 582
+  },
+  {
+    "warehouse_supplier_product_id": "WH-004-SP-001-P-001",
+    "warehouse_id": "WH-004",
+    "supplier_id": "SP-001",
+    "product_id": "P-001",
+    "stock": 31
+  },
+  {
+    "warehouse_supplier_product_id": "WH-005-SP-004-P-003",
+    "warehouse_id": "WH-005",
+    "supplier_id": "SP-004",
+    "product_id": "P-003",
+    "stock": 712
+  },
+  {
+    "warehouse_supplier_product_id": "WH-005-SP-005-P-003",
+    "warehouse_id": "WH-005",
+    "supplier_id": "SP-005",
+    "product_id": "P-003",
+    "stock": 584
+  },
+  {
+    "warehouse_supplier_product_id": "WH-005-SP-006-P-005",
+    "warehouse_id": "WH-005",
+    "supplier_id": "SP-006",
+    "product_id": "P-005",
+    "stock": 12175
+  },
+  {
+    "warehouse_supplier_product_id": "WH-005-SP-001-P-001",
+    "warehouse_id": "WH-005",
+    "supplier_id": "SP-001",
+    "product_id": "P-001",
+    "stock": 0
+  },
+  {
+    "warehouse_supplier_product_id": "WH-005-SP-003-P-005",
+    "warehouse_id": "WH-005",
+    "supplier_id": "SP-003",
+    "product_id": "P-005",
+    "stock": 55
+  },
+  {
+    "warehouse_supplier_product_id": "WH-005-SP-004-P-005",
+    "warehouse_id": "WH-005",
+    "supplier_id": "SP-004",
+    "product_id": "P-005",
+    "stock": 2770
+  },
+  {
+    "warehouse_supplier_product_id": "WH-005-SP-004-P-004",
+    "warehouse_id": "WH-005",
+    "supplier_id": "SP-004",
+    "product_id": "P-004",
+    "stock": 291
+  },
+  {
+    "warehouse_supplier_product_id": "WH-005-SP-004-P-002",
+    "warehouse_id": "WH-005",
+    "supplier_id": "SP-004",
+    "product_id": "P-002",
+    "stock": 178
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-006-P-001",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-006",
+    "product_id": "P-001",
+    "stock": 327
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-003-P-004",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-003",
+    "product_id": "P-004",
+    "stock": 4341
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-005-P-002",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-005",
+    "product_id": "P-002",
+    "stock": 705
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-002-P-002",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-002",
+    "product_id": "P-002",
+    "stock": 4828
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-001-P-004",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-001",
+    "product_id": "P-004",
+    "stock": 0
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-006-P-006",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-006",
+    "product_id": "P-006",
+    "stock": 0
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-004-P-001",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-004",
+    "product_id": "P-001",
+    "stock": 6357
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-004-P-003",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-004",
+    "product_id": "P-003",
+    "stock": 61
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-003-P-005",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-003",
+    "product_id": "P-005",
+    "stock": 584
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-001-P-003",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-001",
+    "product_id": "P-003",
+    "stock": 7535
+  },
+  {
+    "warehouse_supplier_product_id": "WH-006-SP-001-P-005",
+    "warehouse_id": "WH-006",
+    "supplier_id": "SP-001",
+    "product_id": "P-005",
+    "stock": 22
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-003-P-002",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-003",
+    "product_id": "P-002",
+    "stock": 275
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-006-P-006",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-006",
+    "product_id": "P-006",
+    "stock": 10
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-004-P-001",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-004",
+    "product_id": "P-001",
+    "stock": 320
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-001-P-004",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-001",
+    "product_id": "P-004",
+    "stock": 2190
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-004-P-004",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-004",
+    "product_id": "P-004",
+    "stock": 4175
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-003-P-001",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-003",
+    "product_id": "P-001",
+    "stock": 31
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-006-P-002",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-006",
+    "product_id": "P-002",
+    "stock": 480
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-001-P-005",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-001",
+    "product_id": "P-005",
+    "stock": 6727
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-002-P-004",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-002",
+    "product_id": "P-004",
+    "stock": 130
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-005-P-001",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-005",
+    "product_id": "P-001",
+    "stock": 12388
+  },
+  {
+    "warehouse_supplier_product_id": "WH-007-SP-002-P-006",
+    "warehouse_id": "WH-007",
+    "supplier_id": "SP-002",
+    "product_id": "P-006",
+    "stock": 61
+  },
+  {
+    "warehouse_supplier_product_id": "WH-008-SP-004-P-002",
+    "warehouse_id": "WH-008",
+    "supplier_id": "SP-004",
+    "product_id": "P-002",
+    "stock": 266
+  },
+  {
+    "warehouse_supplier_product_id": "WH-008-SP-003-P-002",
+    "warehouse_id": "WH-008",
+    "supplier_id": "SP-003",
+    "product_id": "P-002",
+    "stock": 505
+  },
+  {
+    "warehouse_supplier_product_id": "WH-008-SP-006-P-001",
+    "warehouse_id": "WH-008",
+    "supplier_id": "SP-006",
+    "product_id": "P-001",
+    "stock": 18
+  },
+  {
+    "warehouse_supplier_product_id": "WH-008-SP-004-P-004",
+    "warehouse_id": "WH-008",
+    "supplier_id": "SP-004",
+    "product_id": "P-004",
+    "stock": 190
+  },
+  {
+    "warehouse_supplier_product_id": "WH-008-SP-001-P-004",
+    "warehouse_id": "WH-008",
+    "supplier_id": "SP-001",
+    "product_id": "P-004",
+    "stock": 697
+  },
+  {
+    "warehouse_supplier_product_id": "WH-008-SP-001-P-002",
+    "warehouse_id": "WH-008",
+    "supplier_id": "SP-001",
+    "product_id": "P-002",
+    "stock": 221
+  },
+  {
+    "warehouse_supplier_product_id": "WH-008-SP-003-P-005",
+    "warehouse_id": "WH-008",
+    "supplier_id": "SP-003",
+    "product_id": "P-005",
+    "stock": 5531
+  },
+  {
+    "warehouse_supplier_product_id": "WH-008-SP-006-P-002",
+    "warehouse_id": "WH-008",
+    "supplier_id": "SP-006",
+    "product_id": "P-002",
+    "stock": 61
+  },
+  {
+    "warehouse_supplier_product_id": "WH-009-SP-005-P-001",
+    "warehouse_id": "WH-009",
+    "supplier_id": "SP-005",
+    "product_id": "P-001",
+    "stock": 8356
+  },
+  {
+    "warehouse_supplier_product_id": "WH-009-SP-006-P-003",
+    "warehouse_id": "WH-009",
+    "supplier_id": "SP-006",
+    "product_id": "P-003",
+    "stock": 0
+  },
+  {
+    "warehouse_supplier_product_id": "WH-009-SP-005-P-003",
+    "warehouse_id": "WH-009",
+    "supplier_id": "SP-005",
+    "product_id": "P-003",
+    "stock": 0
+  },
+  {
+    "warehouse_supplier_product_id": "WH-009-SP-001-P-004",
+    "warehouse_id": "WH-009",
+    "supplier_id": "SP-001",
+    "product_id": "P-004",
+    "stock": 399
+  },
+  {
+    "warehouse_supplier_product_id": "WH-009-SP-005-P-006",
+    "warehouse_id": "WH-009",
+    "supplier_id": "SP-005",
+    "product_id": "P-006",
+    "stock": 1960
+  },
+  {
+    "warehouse_supplier_product_id": "WH-009-SP-006-P-005",
+    "warehouse_id": "WH-009",
+    "supplier_id": "SP-006",
+    "product_id": "P-005",
+    "stock": 188
+  },
+  {
+    "warehouse_supplier_product_id": "WH-010-SP-003-P-004",
+    "warehouse_id": "WH-010",
+    "supplier_id": "SP-003",
+    "product_id": "P-004",
+    "stock": 9757
+  },
+  {
+    "warehouse_supplier_product_id": "WH-010-SP-005-P-004",
+    "warehouse_id": "WH-010",
+    "supplier_id": "SP-005",
+    "product_id": "P-004",
+    "stock": 10183
+  },
+  {
+    "warehouse_supplier_product_id": "WH-010-SP-002-P-005",
+    "warehouse_id": "WH-010",
+    "supplier_id": "SP-002",
+    "product_id": "P-005",
+    "stock": 34
+  },
+  {
+    "warehouse_supplier_product_id": "WH-010-SP-003-P-002",
+    "warehouse_id": "WH-010",
+    "supplier_id": "SP-003",
+    "product_id": "P-002",
+    "stock": 60
+  },
+  {
+    "warehouse_supplier_product_id": "WH-010-SP-002-P-006",
+    "warehouse_id": "WH-010",
+    "supplier_id": "SP-002",
+    "product_id": "P-006",
+    "stock": 432
+  },
+  {
+    "warehouse_supplier_product_id": "WH-010-SP-001-P-005",
+    "warehouse_id": "WH-010",
+    "supplier_id": "SP-001",
+    "product_id": "P-005",
+    "stock": 6450
+  },
+  {
+    "warehouse_supplier_product_id": "WH-010-SP-005-P-002",
+    "warehouse_id": "WH-010",
+    "supplier_id": "SP-005",
+    "product_id": "P-002",
+    "stock": 487
+  },
+  {
+    "warehouse_supplier_product_id": "WH-010-SP-004-P-004",
+    "warehouse_id": "WH-010",
+    "supplier_id": "SP-004",
+    "product_id": "P-004",
+    "stock": 11812
+  }
+]

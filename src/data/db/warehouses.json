@@ -1,0 +1,42 @@
+[
+  {
+    "warehouse_id": "WH-001",
+    "warehouse_name": "BKK Central Depot"
+  },
+  {
+    "warehouse_id": "WH-002",
+    "warehouse_name": "BKK North Hub"
+  },
+  {
+    "warehouse_id": "WH-003",
+    "warehouse_name": "Chiang Mai Hub"
+  },
+  {
+    "warehouse_id": "WH-004",
+    "warehouse_name": "Phuket Store"
+  },
+  {
+    "warehouse_id": "WH-005",
+    "warehouse_name": "DMK Cold Storage"
+  },
+  {
+    "warehouse_id": "WH-006",
+    "warehouse_name": "Hat Yai Depot"
+  },
+  {
+    "warehouse_id": "WH-007",
+    "warehouse_name": "Korat Warehouse"
+  },
+  {
+    "warehouse_id": "WH-008",
+    "warehouse_name": "Chonburi Hub"
+  },
+  {
+    "warehouse_id": "WH-009",
+    "warehouse_name": "Samui Cold Store"
+  },
+  {
+    "warehouse_id": "WH-010",
+    "warehouse_name": "Khon Kaen Depot"
+  }
+]

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>interview-test-allocation-system</title>
+    <style>
+      /* Style the loading container to cover the full screen */
+      .first-load-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        /* background-color: #1a1a1a; */
+        font-family: sans-serif;
+        color: #ffffff;
+      }
+      /* Create a simple CSS rotating spinner */
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #333f;
+        border-top: 5px solid #ff9d00;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="first-load-container">
+        <div class="spinner"></div>
+        <h2>Loading...</h2>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -50,7 +50,7 @@ export default function Table() {
   }, [filteredData]);
 
   const sortedData = useMemo(
-    () => sortKey ? sortSubOrderData(filteredData, sortKey, sortDir) : filteredData,
+    () => sortKey && sortDir ? sortSubOrderData(filteredData, sortKey, sortDir) : filteredData,
     [filteredData, sortKey, sortDir],
   );
 

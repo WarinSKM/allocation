@@ -74,7 +74,7 @@ export default function DashBoardPanel() {
               </div>
               <Typography variant="p">{w.stockLeft.toLocaleString()}</Typography>
             </div>
-            <Progress value={(w.stockLeft / stockHook.fullStockPerWarehouse.get(w.warehouse.warehouse_id)) * 100} indicatorClassName="bg-blue-400" />
+            <Progress value={(w.stockLeft / (stockHook.fullStockPerWarehouse.get(w.warehouse.warehouse_id) ?? 1)) * 100} indicatorClassName="bg-blue-400" />
           </div>
         ))}
       </section>

@@ -1,7 +1,7 @@
 import type { SubOrderData } from "@/hooks/useAllocation";
 
 export type SortKey = "order" | "subOrder" | "type" | "request" | "fill" | "value" | "availableCredit" | "createDate" | "product" | "customer" | "warehouse" | "supplier";
-export type SortDir = "asc" | "desc";
+export type SortDir = "asc" | "desc" | null;
 
 export function getSortValue(row: SubOrderData, key: SortKey): string | number {
   switch (key) {

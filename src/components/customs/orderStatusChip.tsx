@@ -7,7 +7,7 @@ const TYPE_CONFIG: Record<AllocationStatus, { label: string; variant: VariantPro
   UNFILLED:  { label: "Unfilled", variant: "green" },
   PARTIAL:   { label: "Partial",  variant: "yellow" },
   FULFILLED: { label: "Filled",   variant: "blue" },
-  PENDING:   { label: "Pending",  variant: "default" },
+  PENDING:   { label: "Pending",  variant: "purple" },
 };
 
 interface OrderStatusChipProps {

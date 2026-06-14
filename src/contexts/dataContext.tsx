@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { initData, type Customer, type Data, type Product, type WarehouseSupplierProduct } from "@/data/helper";
 import type { SubOrder } from "@/data/helper/getSubOrder";
 import type { Order } from "@/data/helper/getOrder";
+import { ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, TYPE_MULTIPLIER } from "@/constants";
 
 type DataContextType = {
   data: Data;
@@ -9,7 +10,7 @@ type DataContextType = {
   getDataById: <T>(params: { id: string; data: T[]; key: keyof T }) => T | undefined;
   setCustomerCredit: (customer_id: string, amount: number) => void;
   setSubOrderFill: (subOrder_id: string, amount: number) => void;
-  setStockLeft: ({ warehose_id, supplier_id, product_id, amount }: { warehose_id: string; supplier_id: string; product_id: string, amount: number }) => void;
+  setStockLeft: ({ warehouse_id, supplier_id, product_id, amount }: { warehouse_id: string; supplier_id: string; product_id: string, amount: number }) => void;
   setSubOrderWsp: (sub_order_id: string, warehouse_supplier_product_id: string) => void;
   setSubOrderStatus: (sub_order_id: string, status: string) => void;
   increaseManualCount: () => void;
@@ -51,13 +52,6 @@ function bestSortForAllocationDataFN(subOrder: SubOrder[], order: Order[]) {
   return result;
 }
 
-// ── Price multiplier per order type ──────────────────────────────────────
-export const TYPE_MULTIPLIER: Record<string, number> = {
-  EMERGENCY: 1.2,
-  OVER_DUE: 1.1,
-  DAILY: 1.0,
-};
-
 // ── Banker's rounding (round-half-to-even) to n decimal places ───────────
 function bankersRound(value: number, dp = 2): number {
   const factor = 10 ** dp;
@@ -76,8 +70,8 @@ function findBestWsp(
   stockMap: Map<string, number>,
   wsp: WarehouseSupplierProduct[],
 ): WarehouseSupplierProduct | undefined {
-  const isAnyWarehouse = warehouseId === 'WH-000';
-  const isAnySupplier = supplierId === 'SP-000';
+  const isAnyWarehouse = warehouseId === ANY_WAREHOUSE_ID;
+  const isAnySupplier  = supplierId  === ANY_SUPPLIER_ID;
 
   // Get candidate
   const candidates = wsp.filter((w) => {
@@ -117,7 +111,7 @@ function runAutoAllocation(data: Data): AllocationResult {
     if (!rawWsp) continue;
 
     // Resolve "any warehouse / any supplier" (WH-000 / SP-000)
-    const wsp = (rawWsp.warehouse_id === 'WH-000' || rawWsp.supplier_id === 'SP-000')
+    const wsp = (rawWsp.warehouse_id === ANY_WAREHOUSE_ID || rawWsp.supplier_id === ANY_SUPPLIER_ID)
       ? findBestWsp(rawWsp.product_id, rawWsp.warehouse_id, rawWsp.supplier_id, stockMap, data.wsp)
       : rawWsp;
 
@@ -211,14 +205,14 @@ const DataContextProvider = ({ children }: { children: ReactNode }) => {
     });
   }
 
-  function setStockLeft({ warehose_id, supplier_id, product_id, amount }: { warehose_id: string; supplier_id: string; product_id: string, amount: number }) {
+  function setStockLeft({ warehouse_id, supplier_id, product_id, amount }: { warehouse_id: string; supplier_id: string; product_id: string, amount: number }) {
     setData((prev) => {
-      const wsp = prev.wsp.find(item => item.warehouse_id === warehose_id && item.supplier_id === supplier_id && item.product_id === product_id);
+      const wsp = prev.wsp.find(item => item.warehouse_id === warehouse_id && item.supplier_id === supplier_id && item.product_id === product_id);
       if (!wsp) return prev;
       const newWsp = { ...wsp, stock: wsp.stock - amount };
       return {
         ...prev,
-        wsp: prev.wsp.map(item => item.warehouse_id === warehose_id && item.supplier_id === supplier_id && item.product_id === product_id ? newWsp : item),
+        wsp: prev.wsp.map(item => item.warehouse_id === warehouse_id && item.supplier_id === supplier_id && item.product_id === product_id ? newWsp : item),
       };
     });
   }

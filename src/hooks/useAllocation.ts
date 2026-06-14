@@ -1,5 +1,6 @@
 import { useDataContext } from "@/contexts/dataContext";
 import type { Customer, Data, Product, Supplier, Warehouse, SubOrderType } from "@/data/helper";
+import { TYPE_MULTIPLIER } from "@/constants";
 import { useEffect, useMemo, useState } from "react";
 
 export type AllocationMethod = "AUTO" | "MANUAL";
@@ -28,18 +29,12 @@ const TYPE_WEIGHT: Record<SubOrderType, number> = {
   DAILY: 2,
 };
 
-const TYPE_MULTIPLIER: Record<string, number> = {
-  EMERGENCY: 1.2,
-  OVER_DUE: 1.1,
-  DAILY: 1.0,
-};
-
 function easyAllocationSortDataFN(data: SubOrderData[]) {
   return [...data].sort((a, b) => TYPE_WEIGHT[a.type] - TYPE_WEIGHT[b.type] || new Date(a.createDate).getTime() - new Date(b.createDate).getTime());
 }
 
 function joinData(data: Data) {
-  const raw = Array.from(data.subOrder.values()).flatMap((so): SubOrderData[] => {
+  const raw = data.subOrder.flatMap((so): SubOrderData[] => {
     const order = data.order.find((item) => item.order_id === so.order_id);
     const wsp = data.wsp.find((item) => item.warehouse_supplier_product_id === so.warehouse_supplier_product_id);
     if (!order || !wsp) return [];

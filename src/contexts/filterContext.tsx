@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import type { SubOrderData } from "@/hooks/useAllocation";
 import type { SubOrderType } from "@/data/helper";
+import { ALL_FILTER_VALUE } from "@/constants";
 
 export type FilterStatus = 'all' | 'unfilled' | 'partial' | 'filled' | 'exceptions';
 export type FilterSource = 'any' | 'auto' | 'manual';
@@ -27,8 +28,8 @@ const FilterContext = createContext<FilterContextType>({
     types: new Set(ALL_TYPES),
     status: 'all',
     source: 'any',
-    warehouse: 'ALL',
-    supplier: 'ALL',
+    warehouse: ALL_FILTER_VALUE,
+    supplier: ALL_FILTER_VALUE,
     search: '',
     toggleType: () => { },
     setStatus: () => { },
@@ -43,8 +44,8 @@ export function FilterContextProvider({ children }: { children: ReactNode }) {
     const [types, setTypes] = useState<Set<SubOrderType>>(new Set(ALL_TYPES));
     const [status, setStatus] = useState<FilterStatus>('all');
     const [source, setSource] = useState<FilterSource>('any');
-    const [warehouse, setWarehouse] = useState('ALL');
-    const [supplier, setSupplier] = useState('ALL');
+    const [warehouse, setWarehouse] = useState(ALL_FILTER_VALUE);
+    const [supplier, setSupplier] = useState(ALL_FILTER_VALUE);
     const [search, setSearch] = useState('');
 
     function toggleType(type: SubOrderType) {
@@ -76,8 +77,8 @@ export function FilterContextProvider({ children }: { children: ReactNode }) {
                 }
             }
 
-            if (warehouse !== 'ALL' && row.warehouse.warehouse_id !== warehouse) return false;
-            if (supplier !== 'ALL' && row.supplier.supplier_id !== supplier) return false;
+            if (warehouse !== ALL_FILTER_VALUE && row.warehouse.warehouse_id !== warehouse) return false;
+            if (supplier !== ALL_FILTER_VALUE && row.supplier.supplier_id !== supplier) return false;
 
             if (search) {
                 const q = search.toLowerCase();

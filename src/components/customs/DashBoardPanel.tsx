@@ -66,15 +66,15 @@ export default function DashBoardPanel() {
           Warehouses
         </Typography>
         {stockHook.eachWarehouseStockLeft.map((w) => (
-          <div key={w.warehose.warehouse_id} className="space-y-1">
+          <div key={w.warehouse.warehouse_id} className="space-y-1">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Typography variant="muted">{w.warehose.warehouse_id}</Typography>
-                <Typography variant="p">{w.warehose.warehouse_name}</Typography>
+                <Typography variant="muted">{w.warehouse.warehouse_id}</Typography>
+                <Typography variant="p">{w.warehouse.warehouse_name}</Typography>
               </div>
               <Typography variant="p">{w.stockLeft.toLocaleString()}</Typography>
             </div>
-            <Progress value={(w.stockLeft / stockHook.fullStockPerWarehouse.get(w.warehose.warehouse_id)) * 100} indicatorClassName="bg-blue-400" />
+            <Progress value={(w.stockLeft / stockHook.fullStockPerWarehouse.get(w.warehouse.warehouse_id)) * 100} indicatorClassName="bg-blue-400" />
           </div>
         ))}
       </section>

@@ -10,8 +10,9 @@ import OrderStatusChip from "./orderStatusChip";
 import TypeChip from "./typeChip";
 import type { SubOrderData } from "@/hooks/useAllocation";
 import type { SubOrderType } from "@/data/helper";
-import { TYPE_MULTIPLIER, findBestWsp } from "@/contexts/dataContext";
+import { findBestWsp } from "@/contexts/dataContext";
 import { useDataContext } from "@/contexts/dataContext";
+import { TYPE_MULTIPLIER, ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, ALL_FILTER_VALUE } from "@/constants";
 import useStock from "@/hooks/useStock";
 import useSupplier from "@/hooks/useSupplier";
 import { useEffect, useMemo, useState } from "react";
@@ -30,18 +31,18 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
   const { allSupplierOptions } = useSupplier();
 
   const [qty, setQty] = useState(0);
-  const [selectedSupplierId, setSelectedSupplierId] = useState("SP-000");
-  const [selectedWarehouseId, setSelectedWarehouseId] = useState("WH-000");
+  const [selectedSupplierId, setSelectedSupplierId] = useState(ANY_SUPPLIER_ID);
+  const [selectedWarehouseId, setSelectedWarehouseId] = useState(ANY_WAREHOUSE_ID);
 
   useEffect(() => {
     if (open && selectedRow) {
       setQty(selectedRow.fill ?? 0);
-      setSelectedSupplierId(selectedRow.supplier.supplier_id ?? "SP-000");
-      setSelectedWarehouseId(selectedRow.warehouse.warehouse_id ?? "WH-000");
+      setSelectedSupplierId(selectedRow.supplier.supplier_id ?? ANY_SUPPLIER_ID);
+      setSelectedWarehouseId(selectedRow.warehouse.warehouse_id ?? ANY_WAREHOUSE_ID);
     } else if (!open) {
       setQty(0);
-      setSelectedSupplierId("SP-000");
-      setSelectedWarehouseId("WH-000");
+      setSelectedSupplierId(ANY_SUPPLIER_ID);
+      setSelectedWarehouseId(ANY_WAREHOUSE_ID);
     }
   }, [open, selectedRow]);
 
@@ -54,8 +55,8 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
   const effectiveCredit = (selectedRow?.availableCredit ?? 0) + currentFill * unitPrice;
   const maxByCredit = unitPrice > 0 ? Math.floor(effectiveCredit / unitPrice) : 0;
 
-  const isAnyWarehouse = selectedWarehouseId === "WH-000" || selectedWarehouseId === "ALL";
-  const isAnySupplier = selectedSupplierId === "SP-000" || selectedSupplierId === "ALL";
+  const isAnyWarehouse = selectedWarehouseId === ANY_WAREHOUSE_ID || selectedWarehouseId === ALL_FILTER_VALUE;
+  const isAnySupplier = selectedSupplierId === ANY_SUPPLIER_ID || selectedSupplierId === ALL_FILTER_VALUE;
   const showCandidates = isAnyWarehouse || isAnySupplier;
 
   const { resolvedWsp, availableStock, candidates } = useMemo(() => {
@@ -73,10 +74,10 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
       stockMap.set(originalWsp.warehouse_supplier_product_id, (stockMap.get(originalWsp.warehouse_supplier_product_id) ?? 0) + currentFill);
     }
 
-    const whId = selectedWarehouseId === "ALL" ? "WH-000" : selectedWarehouseId;
-    const spId = selectedSupplierId === "ALL" ? "SP-000" : selectedSupplierId;
-    const anyWh = whId === "WH-000";
-    const anySp = spId === "SP-000";
+    const whId = selectedWarehouseId === ALL_FILTER_VALUE ? ANY_WAREHOUSE_ID : selectedWarehouseId;
+    const spId = selectedSupplierId === ALL_FILTER_VALUE ? ANY_SUPPLIER_ID : selectedSupplierId;
+    const anyWh = whId === ANY_WAREHOUSE_ID;
+    const anySp = spId === ANY_SUPPLIER_ID;
 
     const sorted = data.wsp
       .filter((w) => {
@@ -117,7 +118,7 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
     setSubOrderFill(selectedRow.subOrder, delta);
     setCustomerCredit(selectedRow.customer.customer_id, costDelta);
     setStockLeft({
-      warehose_id: resolvedWsp.warehouse_id,
+      warehouse_id: resolvedWsp.warehouse_id,
       supplier_id: resolvedWsp.supplier_id,
       product_id: resolvedWsp.product_id,
       amount: delta,

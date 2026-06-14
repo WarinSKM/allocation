@@ -2,6 +2,7 @@ import { useDataContext } from "@/contexts/dataContext";
 import type { Warehouse } from "@/data/helper/getWarehouse";
 import type { WarehouseSupplierProduct } from "@/data/helper/getWarehouseSupplierProduct";
 import { wspStore } from "@/data/helper/getWarehouseSupplierProduct";
+import { ANY_WAREHOUSE_ID, ALL_FILTER_VALUE } from "@/constants";
 import { useMemo } from "react";
 
 function getTotalStockLeft(data: WarehouseSupplierProduct[]) {
@@ -14,10 +15,18 @@ export default function useStock() {
   const dataContext = useDataContext();
 
   const allWarehouse = useMemo(() => {
-    return [{ value: "ALL", label: "All Warehouse" }, { value: "WH-000", label: "Any Warehouse" }, ...dataContext.data.warehouse.map((item) => ({ value: item.warehouse_id, label: item.warehouse_name }))];
+    return [
+      { value: ALL_FILTER_VALUE,   label: "All Warehouse" },
+      { value: ANY_WAREHOUSE_ID,   label: "Any Warehouse" },
+      ...dataContext.data.warehouse.map((item) => ({ value: item.warehouse_id, label: item.warehouse_name })),
+    ];
   }, [dataContext.data.warehouse]);
+
   const allWarehouseOptions = useMemo(() => {
-    return [{ value: "WH-000", label: "Any Warehouse" }, ...dataContext.data.warehouse.map((item) => ({ value: item.warehouse_id, label: item.warehouse_name }))];
+    return [
+      { value: ANY_WAREHOUSE_ID, label: "Any Warehouse" },
+      ...dataContext.data.warehouse.map((item) => ({ value: item.warehouse_id, label: item.warehouse_name })),
+    ];
   }, [dataContext.data.warehouse]);
 
   const totalStockLeft = useMemo(() => {
@@ -25,16 +34,16 @@ export default function useStock() {
   }, [dataContext.data.wsp]);
 
   const eachWarehouseStockLeft = useMemo(() => {
-    const result: Map<string, { warehose: Warehouse; stockLeft: number }> = new Map();
+    const result: Map<string, { warehouse: Warehouse; stockLeft: number }> = new Map();
     const wspdata = dataContext.data.wsp;
-    for (let wsp of wspdata) {
-      const currWareHouse = dataContext.data.warehouse.find((item) => item.warehouse_id === wsp.warehouse_id);
-      if (!currWareHouse) continue;
-      if (!result.get(currWareHouse.warehouse_id)) {
-        result.set(currWareHouse.warehouse_id, { warehose: currWareHouse, stockLeft: wsp.stock });
+    for (const wsp of wspdata) {
+      const currWarehouse = dataContext.data.warehouse.find((item) => item.warehouse_id === wsp.warehouse_id);
+      if (!currWarehouse) continue;
+      if (!result.get(currWarehouse.warehouse_id)) {
+        result.set(currWarehouse.warehouse_id, { warehouse: currWarehouse, stockLeft: wsp.stock });
       } else {
-        const prev = result.get(currWareHouse.warehouse_id)!;
-        result.set(currWareHouse.warehouse_id, { warehose: currWareHouse, stockLeft: prev.stockLeft + wsp.stock });
+        const prev = result.get(currWarehouse.warehouse_id)!;
+        result.set(currWarehouse.warehouse_id, { warehouse: currWarehouse, stockLeft: prev.stockLeft + wsp.stock });
       }
     }
     return Array.from(result.values());
@@ -45,16 +54,16 @@ export default function useStock() {
   }, [totalStockLeft]);
 
   const fullStockPerWarehouse = useMemo(() => {
-    const warehoseMap = new Map<string, number>();
-    for (let wsp of wspStore) {
-      if (!warehoseMap.get(wsp.warehouse_id)) {
-        warehoseMap.set(wsp.warehouse_id, wsp.stock);
+    const warehouseMap = new Map<string, number>();
+    for (const wsp of wspStore) {
+      if (!warehouseMap.get(wsp.warehouse_id)) {
+        warehouseMap.set(wsp.warehouse_id, wsp.stock);
       } else {
-        const prev = warehoseMap.get(wsp.warehouse_id)!;
-        warehoseMap.set(wsp.warehouse_id, prev + wsp.stock);
+        const prev = warehouseMap.get(wsp.warehouse_id)!;
+        warehouseMap.set(wsp.warehouse_id, prev + wsp.stock);
       }
     }
-    return warehoseMap;
+    return warehouseMap;
   }, []);
 
   return { eachWarehouseStockLeft, totalStockLeft, totalStock, stockLeftPct, fullStockPerWarehouse, allWarehouse, allWarehouseOptions };

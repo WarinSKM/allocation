@@ -10,7 +10,6 @@ import OrderStatusChip from "./orderStatusChip";
 import TypeChip from "./typeChip";
 import type { SubOrderData } from "@/hooks/useAllocation";
 import type { SubOrderType } from "@/data/helper";
-import { findBestWsp } from "@/contexts/dataContext";
 import { useDataContext } from "@/contexts/dataContext";
 import { TYPE_MULTIPLIER, ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, ALL_FILTER_VALUE } from "@/constants";
 import useStock from "@/hooks/useStock";

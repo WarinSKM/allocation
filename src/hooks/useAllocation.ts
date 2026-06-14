@@ -101,7 +101,7 @@ function useAllocation() {
     return () => clearTimeout(timer);
   }, []);
 
-  return { loading, data, sortSubOrderDataByPriority, totalAllocated, totalRequest, totalValueAllocated };
+  return { loading, data, totalAllocated, totalRequest, totalValueAllocated };
 }
 
 export { useAllocation, getTotalAllocated, getTotalRequested, getTotalValueAllocated };

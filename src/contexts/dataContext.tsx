@@ -7,7 +7,6 @@ import { ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, TYPE_MULTIPLIER } from "@/constants"
 type DataContextType = {
   data: Data;
   setData: React.Dispatch<React.SetStateAction<Data>>;
-  getDataById: <T>(params: { id: string; data: T[]; key: keyof T }) => T | undefined;
   setCustomerCredit: (customer_id: string, amount: number) => void;
   setSubOrderFill: (subOrder_id: string, amount: number) => void;
   setStockLeft: ({ warehouse_id, supplier_id, product_id, amount }: { warehouse_id: string; supplier_id: string; product_id: string, amount: number }) => void;
@@ -165,7 +164,6 @@ const initValue = {
   data: initData,
   manualCount: 0,
   setData: () => { },
-  getDataById,
   setCustomerCredit: () => { },
   setSubOrderFill: () => { },
   setStockLeft: () => { },
@@ -250,7 +248,7 @@ const DataContextProvider = ({ children }: { children: ReactNode }) => {
     setData((prev) => ({ ...prev, ...result }));
   }, []);
 
-  return <DataContext.Provider value={{ ...initValue, data, setData, getDataById, setCustomerCredit, setSubOrderFill, setStockLeft, setSubOrderWsp, setSubOrderStatus, increaseManualCount, manualCount }}>{children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ ...initValue, data, setData, setCustomerCredit, setSubOrderFill, setStockLeft, setSubOrderWsp, setSubOrderStatus, increaseManualCount, manualCount }}>{children}</DataContext.Provider>;
 };
 
 const useDataContext = () => {

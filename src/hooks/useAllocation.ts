@@ -1,6 +1,7 @@
 import { useDataContext } from "@/contexts/dataContext";
 import type { Customer, Data, Product, Supplier, Warehouse, SubOrderType } from "@/data/helper";
 import { TYPE_MULTIPLIER, type AllocationStatus, type AllocationMethod } from "@/constants";
+import { bankersRound } from "@/lib/round";
 import { useEffect, useMemo, useState } from "react";
 
 export type SubOrderData = {
@@ -43,7 +44,7 @@ function joinData(data: Data) {
     const product = data.product.find((item) => item.product_id === wsp.product_id);
     if (!customer || !warehouse || !supplier || !product) return [];
 
-    const unitPrice = product.product_price * (TYPE_MULTIPLIER[so.type] ?? 1.0);
+    const unitPrice = bankersRound(product.product_price * (TYPE_MULTIPLIER[so.type] ?? 1.0));
 
     return [
       {
@@ -56,7 +57,7 @@ function joinData(data: Data) {
         supplier,
         request: so.request,
         fill: so.allocated_qty,
-        value: so.allocated_qty * unitPrice,
+        value: bankersRound(so.allocated_qty * unitPrice),
         availableCredit: customer.credit,
         createDate: order.create_date,
         remark: so.remark,

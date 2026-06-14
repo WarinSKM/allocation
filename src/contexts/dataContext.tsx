@@ -3,6 +3,7 @@ import { initData, type Customer, type Data, type Product, type WarehouseSupplie
 import type { SubOrder } from "@/data/helper/getSubOrder";
 import type { Order } from "@/data/helper/getOrder";
 import { ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, TYPE_MULTIPLIER, type AllocationStatus } from "@/constants";
+import { bankersRound } from "@/lib/round";
 
 type DataContextType = {
   data: Data;
@@ -49,16 +50,6 @@ function sortSubOrdersByPriority(subOrder: SubOrder[], order: Order[]) {
 
   const result = [...sortedEmergencyData, ...sortedOverdueData, ...sortedDailyData];
   return result;
-}
-
-// ── Banker's rounding (round-half-to-even) to n decimal places ───────────
-function bankersRound(value: number, dp = 2): number {
-  const factor = 10 ** dp;
-  const shifted = value * factor;
-  const floor = Math.floor(shifted);
-  const diff = shifted - floor;
-  if (Math.abs(diff - 0.5) > Number.EPSILON) return Math.round(shifted) / factor;
-  return (floor % 2 === 0 ? floor : floor + 1) / factor;
 }
 
 // ── Find best WSP for "any warehouse / any supplier" fallback ─────────────
@@ -182,7 +173,7 @@ const DataContextProvider = ({ children }: { children: ReactNode }) => {
     setData((prev) => {
       const customer = prev.customer.find(item => item.customer_id === customer_id);
       if (!customer) return prev;
-      const newCustomer = { ...customer, credit: customer.credit - amount };
+      const newCustomer = { ...customer, credit: bankersRound(customer.credit - amount) };
       return {
         ...prev,
         customer: prev.customer.map(item => item.customer_id === customer_id ? newCustomer : item),
@@ -255,5 +246,6 @@ const useDataContext = () => {
   return useContext(DataContext);
 };
 
-export { DataContextProvider, useDataContext, sortSubOrdersByPriority, runAutoAllocation, bankersRound, findBestWsp };
+export { DataContextProvider, useDataContext, sortSubOrdersByPriority, runAutoAllocation, findBestWsp };
+export { bankersRound } from "@/lib/round";
 export type { AllocationResult };

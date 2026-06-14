@@ -12,6 +12,7 @@ import type { SubOrderData } from "@/hooks/useAllocation";
 import type { SubOrderType } from "@/data/helper";
 import { useDataContext } from "@/contexts/dataContext";
 import { TYPE_MULTIPLIER, ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, ALL_FILTER_VALUE, type AllocationMethod } from "@/constants";
+import { bankersRound } from "@/lib/round";
 import useWarehouseOptions from "@/hooks/useWarehouseOptions";
 import useSupplierOptions from "@/hooks/useSupplierOptions";
 import { useEffect, useMemo, useState } from "react";
@@ -46,12 +47,12 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
   }, [open, selectedRow]);
 
   const multiplier = TYPE_MULTIPLIER[selectedRow?.type ?? "DAILY"] ?? 1.0;
-  const unitPrice = (selectedRow?.product.product_price ?? 0) * multiplier;
-  const cost = qty * unitPrice;
+  const unitPrice = bankersRound((selectedRow?.product.product_price ?? 0) * multiplier);
+  const cost = bankersRound(qty * unitPrice);
   const currentFill = selectedRow?.fill ?? 0;
 
   // Add back what's already allocated so re-allocation sees full headroom
-  const effectiveCredit = (selectedRow?.availableCredit ?? 0) + currentFill * unitPrice;
+  const effectiveCredit = bankersRound((selectedRow?.availableCredit ?? 0) + currentFill * unitPrice);
   const maxByCredit = unitPrice > 0 ? Math.floor(effectiveCredit / unitPrice) : 0;
 
   const isAnyWarehouse = selectedWarehouseId === ANY_WAREHOUSE_ID || selectedWarehouseId === ALL_FILTER_VALUE;
@@ -113,7 +114,7 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
   function handleApply() {
     if (!selectedRow || !resolvedWsp) return;
     const delta = qty - selectedRow.fill;
-    const costDelta = delta * unitPrice;
+    const costDelta = bankersRound(delta * unitPrice);
     setSubOrderFill(selectedRow.subOrder, delta);
     setCustomerCredit(selectedRow.customer.customer_id, costDelta);
     setStockLeft({

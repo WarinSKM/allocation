@@ -1,7 +1,8 @@
 import { Kbd } from "../ui/kbd";
+import type { AllocationMethod } from "@/constants";
 
 interface OrderMethodProps {
-  method: "AUTO" | "MANUAL";
+  method: AllocationMethod;
 }
 
 export default function OrderMethod({ method }: OrderMethodProps) {

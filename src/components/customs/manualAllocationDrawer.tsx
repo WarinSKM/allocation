@@ -11,7 +11,7 @@ import TypeChip from "./typeChip";
 import type { SubOrderData } from "@/hooks/useAllocation";
 import type { SubOrderType } from "@/data/helper";
 import { useDataContext } from "@/contexts/dataContext";
-import { TYPE_MULTIPLIER, ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, ALL_FILTER_VALUE } from "@/constants";
+import { TYPE_MULTIPLIER, ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, ALL_FILTER_VALUE, type AllocationMethod } from "@/constants";
 import useWarehouseOptions from "@/hooks/useWarehouseOptions";
 import useSupplierOptions from "@/hooks/useSupplierOptions";
 import { useEffect, useMemo, useState } from "react";
@@ -145,7 +145,7 @@ export default function ManualAllocationDrawer({ onOpenChange, open, selectedRow
               <div className="flex items-center gap-2">
                 <TypeChip type={(selectedRow?.type ?? "DAILY") as SubOrderType} />
                 <OrderStatusChip type={selectedRow?.status ?? "PENDING"} />
-                <OrderMethod method={(selectedRow?.allocationMethod ?? "AUTO") as "AUTO" | "MANUAL"} />
+                <OrderMethod method={(selectedRow?.allocationMethod ?? "AUTO") as AllocationMethod} />
               </div>
             </DrawerHeader>
 

@@ -1,9 +1,7 @@
 import { useDataContext } from "@/contexts/dataContext";
 import type { Customer, Data, Product, Supplier, Warehouse, SubOrderType } from "@/data/helper";
-import { TYPE_MULTIPLIER } from "@/constants";
+import { TYPE_MULTIPLIER, type AllocationStatus, type AllocationMethod } from "@/constants";
 import { useEffect, useMemo, useState } from "react";
-
-export type AllocationMethod = "AUTO" | "MANUAL";
 
 export type SubOrderData = {
   order: string;
@@ -19,7 +17,7 @@ export type SubOrderData = {
   availableCredit: number;
   createDate: string;
   remark: string;
-  status: string;
+  status: AllocationStatus;
   allocationMethod: AllocationMethod;
 };
 
@@ -62,7 +60,7 @@ function joinData(data: Data) {
         availableCredit: customer.credit,
         createDate: order.create_date,
         remark: so.remark,
-        status: so.status,
+        status: so.status as AllocationStatus,
         allocationMethod: so.allocation_method as AllocationMethod,
       },
     ];
@@ -105,3 +103,4 @@ function useAllocation() {
 }
 
 export { useAllocation, getTotalAllocated, getTotalRequested, getTotalValueAllocated };
+export type { AllocationStatus, AllocationMethod } from "@/constants";

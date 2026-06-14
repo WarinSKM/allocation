@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { initData, type Customer, type Data, type Product, type WarehouseSupplierProduct } from "@/data/helper";
 import type { SubOrder } from "@/data/helper/getSubOrder";
 import type { Order } from "@/data/helper/getOrder";
-import { ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, TYPE_MULTIPLIER } from "@/constants";
+import { ANY_WAREHOUSE_ID, ANY_SUPPLIER_ID, TYPE_MULTIPLIER, type AllocationStatus } from "@/constants";
 
 type DataContextType = {
   data: Data;
@@ -11,7 +11,7 @@ type DataContextType = {
   setSubOrderFill: (subOrder_id: string, amount: number) => void;
   setStockLeft: ({ warehouse_id, supplier_id, product_id, amount }: { warehouse_id: string; supplier_id: string; product_id: string, amount: number }) => void;
   setSubOrderWsp: (sub_order_id: string, warehouse_supplier_product_id: string) => void;
-  setSubOrderStatus: (sub_order_id: string, status: string) => void;
+  setSubOrderStatus: (sub_order_id: string, status: AllocationStatus) => void;
   increaseManualCount: () => void;
   manualCount: number;
 };
@@ -230,7 +230,7 @@ const DataContextProvider = ({ children }: { children: ReactNode }) => {
     });
   }
 
-  function setSubOrderStatus(sub_order_id: string, status: string) {
+  function setSubOrderStatus(sub_order_id: string, status: AllocationStatus) {
     setData((prev) => ({
       ...prev,
       subOrder: prev.subOrder.map(item =>
